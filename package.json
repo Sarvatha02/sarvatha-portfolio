@@ -1,0 +1,8 @@
+{
+  "name": "sarvatha-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio",
+  "scripts": {
+    "build": "echo \"No build step required\""
+  }
+}
