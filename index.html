@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarvatha R Portfolio</title>
+
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-pale: #EFF6FF;
+    --dark: #0F172A;
+    --mid: #334155;
+    --muted: #64748B;
+    --light: #F8FAFC;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --card-shadow: 0 2px 20px rgba(15,23,42,0.07);
+    --card-shadow-hover: 0 12px 40px rgba(37,99,235,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    border: 1.5px solid var(--border);
+    padding: 0.55rem 1.4rem;
+    border-radius: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  /* ===== HERO ===== */
+  #home {
+    min-height: 100vh;
+    padding-top: 64px;
+    background: linear-gradient(135deg, #EFF6FF 0%, #F0F9FF 40%, #F8FAFC 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #home::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(37,99,235,0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .available-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--dark);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title .accent { color: var(--blue); }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-photo-wrap {
+    position: relative;
+    width: 340px;
+    height: 400px;
+  }
+
+  .hero-photo-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--blue) 0%,
+      #60A5FA 100%
+    );
+    border-radius: 24px 24px 80px 24px;
+    transform: rotate(3deg);
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #CBD5E1;
+  }
+
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 8px 30px rgba(15,23,42,0.12);
+    font-size: 0.8rem;
+  }
+
+  .float-card .fc-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+  }
+
+  .float-card .fc-val {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 1rem;
+  }
+
+  .float-card-exp {
+    top: 20px;
+    left: -30px;
+  }
+
+  .float-card-cgpa {
+    bottom: 30px;
+    right: -20px;
+  }
+
+  .float-card-cgpa .fc-val {
+    color: var(--blue);
+    font-size: 1.3rem;
+  }
+
+  .float-card-cgpa .fc-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 80px 5%; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-badge {
+    display: inline-block;
+    background: var(--blue-pale);
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title .accent { color: var(--blue); }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  .spec-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .spec-card {
+    background: var(--blue-pale);
+    border-radius: 14px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .spec-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .spec-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .stat-num {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: var(--blue);
+    letter-spacing: -1px;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  #experience { background: var(--light); }
+
+  .exp-edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .timeline {
+    position: relative;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  }
+
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 20px;
+    bottom: -8px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item:last-child::after { display: none; }
+
+  .exp-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .exp-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark);
+  }
+
+  .exp-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .exp-company {
+    font-size: 0.85rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets { list-style: none; }
+
+  .exp-bullets li {
+    font-size: 0.85rem;
+    color: var(--mid);
+    padding: 0.25rem 0;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .exp-bullets li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+  }
+
+  .edu-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+  }
+
+  .edu-years {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-inst {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-deg {
+    font-size: 0.85rem;
+    color: var(--mid);
+    margin-bottom: 1rem;
+  }
+
+  .cgpa-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .col-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+  }
+
+  /* ===== SKILLS ===== */
+  #skills { background: var(--white); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .skill-category {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-category:hover {
+    border-color: var(--blue-light);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .skill-cat-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--mid);
+  }
+
+  /* ===== PROJECTS ===== */
+  #projects { background: var(--light); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .project-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 0.7rem;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-tag {
+    background: var(--blue-pale);
+    color: var(--blue);
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--blue);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: auto;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== SERVICES ===== */
+  #services { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .service-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.8rem;
+    transition: all 0.2s;
+  }
+
+  .service-card:hover {
+    border-color: var(--blue-light);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--blue);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 0.97rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact {
+    background: var(--light);
+    padding: 80px 5%;
+    text-align: center;
+  }
+
+  #contact .section-badge {
+    background: var(--blue-pale);
+    color: var(--blue);
+  }
+
+  #contact .section-title {
+    color: var(--dark);
+    margin-bottom: 0.8rem;
+  }
+
+  #contact .section-sub {
+    color: var(--muted);
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-btn.primary {
+    background: var(--blue);
+    color: white;
+  }
+
+  .contact-btn.primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+  }
+
+  .contact-btn.ghost {
+    border: 1.5px solid var(--border);
+    color: var(--mid);
+  }
+
+  .contact-btn.ghost:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .contact-detail {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .contact-detail a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  footer {
+    background: white;
+    padding: 1.5rem 5%;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+  .delay-5 { animation-delay: 0.65s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero-inner,
+    .about-grid,
+    .exp-edu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-right {
+      display: none;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .services-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .nav-links {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid,
+    .projects-grid,
+    .services-grid,
+    .stats-grid,
+    .spec-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Sarvatha<span>.</span></div>
+
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <a href="mailto:rsarvatha@gmail.com" class="btn-primary">
+    Contact Me
+  </a>
+</nav>
+
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+
+    <div class="hero-left">
+
+      <div class="available-badge fade-up">
+        <span class="dot"></span>
+        Available for opportunities
+      </div>
+
+      <h1 class="hero-title fade-up delay-1">
+        Hi, I'm <span class="accent">Sarvatha</span><br>
+        AI-Focused<br>
+        Full Stack<br>
+        Developer
+      </h1>
+
+      <p class="hero-sub fade-up delay-2">
+        Building intelligent applications with Python, FastAPI, React.js,
+        Spring Boot and PostgreSQL — integrating ML models, LLM tool-calling
+        and scalable backend systems.
+      </p>
+
+      <div class="hero-actions fade-up delay-3">
+
+        <a href="#projects" class="btn-primary">
+          View Projects →
+        </a>
+
+        <a href="#contact" class="btn-outline">
+          Contact Me
+        </a>
+
+        <a
+          href="https://drive.google.com/file/d/1mvgIHLmyB_JWrKzBLP51rrVxs63zZdM5/view?usp=sharing"
+          target="_blank"
+          class="btn-outline"
+        >
+          View Resume
+        </a>
+
+      </div>
+    </div>
+
+
+    <div class="hero-right fade-up delay-4">
+
+      <div class="hero-photo-wrap">
+
+        <div class="hero-photo-bg"></div>
+
+        <div class="hero-photo">
+          <img
+            src="data:image/jpeg;base64,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"
+            alt="Sarvatha"
+          >
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+
+    <span class="section-badge">About Me</span>
+
+    <h2 class="section-title">
+      Building with <span class="accent">Purpose</span>
+    </h2>
+
+    <div class="about-grid">
+
+      <div class="about-text">
+
+        <p>
+          I am an AI-focused software developer passionate about building
+          intelligent applications and scalable backend systems.
+        </p>
+
+        <p>
+          I work with Python, FastAPI, React.js, Spring Boot, PostgreSQL,
+          machine learning models, and AI APIs to develop practical
+          software solutions.
+        </p>
+
+        <div class="spec-cards">
+
+          <div class="spec-card">
+            <div class="spec-icon">AI</div>
+            <span>AI &amp; Machine Learning</span>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">⚙</div>
+            <span>Backend Development</span>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">⌘</div>
+            <span>Full Stack Development</span>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-icon">API</div>
+            <span>REST API Development</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Major Projects</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">Focused Development</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Development Stacks</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-num">2026</div>
+          <div class="stat-label">Graduate</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience">
+
+  <div class="section-inner">
+
+    <span class="section-badge">Experience</span>
+
+    <h2 class="section-title">
+      Experience &amp; <span class="accent">Education</span>
+    </h2>
+
+    <div class="exp-edu-grid">
+
+      <div>
+
+        <div class="col-title">
+          💼 Experience
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="exp-card">
+
+              <div class="exp-header">
+                <div class="exp-title">
+                  Software Development Intern
+                </div>
+
+                <div class="exp-date">
+                  2025
+                </div>
+              </div>
+
+              <div class="exp-company">
+                Infosys Springboard
+              </div>
+
+              <ul class="exp-bullets">
+
+                <li>
+                  Developed a full-stack Global IP Intelligence Platform.
+                </li>
+
+                <li>
+                  Worked with React.js, Spring Boot and PostgreSQL.
+                </li>
+
+                <li>
+                  Integrated AI capabilities for patent analysis.
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="exp-card">
+
+              <div class="exp-header">
+                <div class="exp-title">
+                  AI / Software Development
+                </div>
+
+                <div class="exp-date">
+                  2025–2026
+                </div>
+              </div>
+
+              <div class="exp-company">
+                Project &amp; Research Work
+              </div>
+
+              <ul class="exp-bullets">
+
+                <li>
+                  Built AI-powered applications using Python and FastAPI.
+                </li>
+
+                <li>
+                  Developed machine learning solutions using XGBoost.
+                </li>
+
+                <li>
+                  Worked with AI APIs and intelligent application workflows.
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="col-title">
+          🎓 Education
+        </div>
+
+        <div class="edu-card">
+
+          <div class="edu-years">
+            2022 – 2026
+          </div>
+
+          <div class="edu-inst">
+            SSM Institute of Engineering and Technology
+          </div>
+
+          <div class="edu-deg">
+            Bachelor of Engineering
+          </div>
+
+          <span class="cgpa-badge">
+            CGPA: 8.3
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+
+  <div class="section-inner">
+
+    <span class="section-badge">Skills</span>
+
+    <h2 class="section-title">
+      Technical <span class="accent">Expertise</span>
+    </h2>
+
+    <p class="section-sub">
+      Technologies and tools I use to build intelligent and scalable
+      software systems.
+    </p>
+
+
+    <div class="skills-grid">
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Programming
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Frontend
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">React.js</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Backend
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">FastAPI</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Django</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Node.js</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Databases
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Supabase</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          AI &amp; Machine Learning
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">XGBoost</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Feature Engineering</span>
+          <span class="tag">Model Training</span>
+          <span class="tag">Model Evaluation</span>
+          <span class="tag">Gemini AI</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Data &amp; Libraries
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+
+      </div>
+
+
+      <div class="skill-category">
+
+        <div class="skill-cat-title">
+          Tools &amp; Core
+        </div>
+
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">DSA</span>
+          <span class="tag">OOP</span>
+          <span class="tag">DBMS</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <div class="section-inner">
+
+    <span class="section-badge">Work</span>
+
+    <h2 class="section-title">
+      Featured <span class="accent">Projects</span>
+    </h2>
+
+    <p class="section-sub">
+      Real-world systems built with production-grade practices.
+    </p>
+
+
+    <div class="projects-grid">
+
+
+      <!-- PROJECT 1: DYSLEXIA -->
+      <div class="project-card">
+
+        <div class="project-icon">
+          🧠
+        </div>
+
+        <div class="project-title">
+          Intelligent Dyslexia Detection &amp; Severity Classification
+        </div>
+
+        <p class="project-desc">
+          AI-powered dyslexia screening platform with cognitive assessments
+          for reading, spelling, memory, and phonological awareness.
+          Real-time risk prediction with severity levels.
+        </p>
+
+        <div class="project-tags">
+
+          <span class="project-tag">
+            XGBoost
+          </span>
+
+          <span class="project-tag">
+            React.js
+          </span>
+
+          <span class="project-tag">
+            FastAPI
+          </span>
+
+          <span class="project-tag">
+            Supabase
+          </span>
+
+        </div>
+
+        <a
+          href="https://github.com/Sarvatha02/Dyslexia.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub →
+        </a>
+
+      </div>
+
+
+      <!-- PROJECT 2: GLOBAL IP -->
+      <div class="project-card">
+
+        <div class="project-icon">
+          🌐
+        </div>
+
+        <div class="project-title">
+          Global IP Intelligence Platform
+        </div>
+
+        <p class="project-desc">
+          Full-stack platform to analyze and manage worldwide patent and
+          trademark data. Smart search integrating USPTO, WIPO, EPO databases
+          with AI-powered patent summarization.
+        </p>
+
+        <div class="project-tags">
+
+          <span class="project-tag">
+            Spring Boot
+          </span>
+
+          <span class="project-tag">
+            React.js
+          </span>
+
+          <span class="project-tag">
+            Gemini AI
+          </span>
+
+          <span class="project-tag">
+            PostgreSQL
+          </span>
+
+        </div>
+
+        <a
+          href="https://github.com/Sarvatha02/Global-Ip-Intelligence-Platform.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub →
+        </a>
+
+      </div>
+
+
+      <!-- PROJECT 3: GEOVISION -->
+      <div class="project-card">
+
+        <div class="project-icon">
+          🌍
+        </div>
+
+        <div class="project-title">
+          GeoVision – AI-Powered Spatial Intelligence Platform
+        </div>
+
+        <p class="project-desc">
+          AI-powered spatial intelligence platform designed to process,
+          analyze, and visualize geospatial information through intelligent
+          APIs and interactive web interfaces. The platform combines
+          AI-driven analysis with modern web technologies to transform
+          spatial information into actionable insights.
+        </p>
+
+        <div class="project-tags">
+
+          <span class="project-tag">
+            Python
+          </span>
+
+          <span class="project-tag">
+            FastAPI
+          </span>
+
+          <span class="project-tag">
+            React.js
+          </span>
+
+          <span class="project-tag">
+            AI
+          </span>
+
+          <span class="project-tag">
+            REST APIs
+          </span>
+
+          <span class="project-tag">
+            Numpy
+          </span>
+
+          <span class="project-tag">
+            Pandas
+          </span>
+
+          <span class="project-tag">
+            REST APIs
+          </span>
+
+        </div>
+
+        <!-- CHANGE THIS URL -->
+        <a
+          href="https://github.com/Sarvatha02/GeoVision-AI-Powered-Spatial-Intelligence-Platform.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub →
+        </a>
+
+      </div>
+
+
+      <!-- PROJECT 4: CRYPTO -->
+      <div class="project-card">
+
+        <div class="project-icon">
+          📈
+        </div>
+
+        <div class="project-title">
+          Crypto Portfolio Tracker
+        </div>
+
+        <p class="project-desc">
+          Portfolio management system tracking assets across multiple
+          exchanges. Integrated CoinGecko, Binance, Etherscan APIs for
+          real-time pricing and automated scam detection.
+        </p>
+
+        <div class="project-tags">
+
+          <span class="project-tag">
+            Spring Boot
+          </span>
+
+          <span class="project-tag">
+            React.js
+          </span>
+
+          <span class="project-tag">
+            MySQL
+          </span>
+
+          <span class="project-tag">
+            JWT
+          </span>
+
+        </div>
+
+        <a
+          href="https://github.com/Sarvatha02/crypto-portfolio.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub →
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section id="services">
+
+  <div class="section-inner">
+
+    <span class="section-badge">
+      Expertise
+    </span>
+
+    <h2 class="section-title">
+      What I <span class="accent">Create</span>
+    </h2>
+
+
+    <div class="services-grid">
+
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          💼
+        </div>
+
+        <div class="service-title">
+          Full Stack Applications
+        </div>
+
+        <div class="service-desc">
+          Building complete web applications using modern frontend,
+          backend and database technologies.
+        </div>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          🤖
+        </div>
+
+        <div class="service-title">
+          AI-Powered Applications
+        </div>
+
+        <div class="service-desc">
+          Integrating machine learning models and AI APIs into practical
+          software applications.
+        </div>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          ⚙️
+        </div>
+
+        <div class="service-title">
+          Backend &amp; APIs
+        </div>
+
+        <div class="service-desc">
+          Developing scalable REST APIs and backend systems using Python
+          and Java technologies.
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <div class="section-inner">
+
+    <span class="section-badge">
+      Contact
+    </span>
+
+    <h2 class="section-title">
+      Let's <span class="accent">Connect</span>
+    </h2>
+
+    <p class="section-sub">
+      I'm open to software development, AI and full-stack opportunities.
+    </p>
+
+
+    <div class="contact-links">
+
+      <a
+        href="mailto:rsarvatha@gmail.com"
+        class="contact-btn primary"
+      >
+        Email Me
+      </a>
+
+      <a
+        href="https://github.com/Sarvatha02"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-btn ghost"
+      >
+        GitHub
+      </a>
+
+      <a
+        href="https://sarvatha-portfolio.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-btn ghost"
+      >
+        Portfolio
+      </a>
+
+    </div>
+
+
+    <div class="contact-detail">
+
+      Email:
+      <a href="mailto:rsarvatha@gmail.com">
+        rsarvatha@gmail.com
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  © 2026 Sarvatha R. All rights reserved.
+
+</footer>
+
+
+</body>
+</html>
